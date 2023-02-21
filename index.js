@@ -13,27 +13,33 @@
 const townInput = document.querySelector("#townInput");
 const searchButton = document.querySelector("#searchButton");
 
+const weatherTown = document.querySelector("#weatherTown");
+const weatherTemp = document.querySelector("#weatherTemp");
+const weatherWeather = document.querySelector("#weatherWeather");
+
+const weatherFeels = document.querySelector("#weatherFeels");
+const weatherPressure = document.querySelector("#weatherPressure");
+const weatherHumidity = document.querySelector("#weatherHumidity");
+const weatherTimezone = document.querySelector("#weatherTimeZone");
+
+
 searchButton.addEventListener('click', async ()=>{
     const townName = townInput.value;
     townInput.value = "";
 
     const weatherObject = await getWeather(townName);
 
-    console.log(`Name: ${weatherObject.name}`)
-    console.log(`Weather: ${weatherObject.weather[0].description}`)
-    console.log(`Temperature: ${weatherObject.main.temp-273.15}`)
-    console.log(`FeelsLike: ${weatherObject.main.feels_like-273.15}`);
+    weatherTown.innerText = `Name: ${weatherObject.name}`
+    weatherTemp.innerText = `Temperature: ${(weatherObject.main.temp-273.15).toFixed(0)}`
+    weatherWeather.innerText = `Weather: ${weatherObject.weather[0].description}`
 
-    console.log(`Pressure: ${weatherObject.main.pressure}mb`)
-    console.log(`Humidity: ${weatherObject.main.humidity}%`)
+    weatherFeels.innerText = `FeelsLike: ${weatherObject.main.feels_like-273.15}`
+    weatherPressure.innerText = `Pressure: ${weatherObject.main.pressure}mb`
+    weatherHumidity.innerText = `Humidity: ${weatherObject.main.humidity}g/m3`
 
-    console.log(`Timezone: +${weatherObject.timezone/3600}`)
+    const timeZone = weatherObject.timezone > 0 ? "+" : ""; 
+    weatherTimezone.innerText = `Timezone: ${timeZone}${weatherObject.timezone/3600}`
 
-
-    
-   
-
-    
 } )
 
 async function getWeather(town){
