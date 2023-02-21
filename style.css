@@ -76,6 +76,22 @@ header{
 #weather #weatherExtra{
     padding-left: 20px;
 
-
     font-size: 15px;
+}
+
+footer{
+
+    position: absolute;
+
+    bottom: 0vh;
+    text-align: center;
+    width: 99%;
+
+    font-size: 35px;
+}
+
+img{
+    visibility: hidden;
+    width: 20%;
+    margin: auto;
 }

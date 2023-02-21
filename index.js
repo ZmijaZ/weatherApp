@@ -1,14 +1,14 @@
 
-// const img = document.querySelector('img');
+const img = document.querySelector('img');
 
-// async function getMVP(){
-//     const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=hgIKmZjANOXuCYWXTsCy9CYFz5ychwAF&s=jokic');
+async function getMVP(){
+    const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=hgIKmZjANOXuCYWXTsCy9CYFz5ychwAF&s=jokic');
 
-//     const data = await response.json();
-//     img.src = data.data.images.original.url;
+    const data = await response.json();
+    img.src = data.data.images.original.url;
 
-// }
-// getMVP();
+}
+getMVP();
 
 const townInput = document.querySelector("#townInput");
 const searchButton = document.querySelector("#searchButton");
@@ -42,6 +42,7 @@ searchButton.addEventListener('click', async ()=>{
     weatherTimezone.innerText = `Timezone: ${timeZone}${weatherObject.timezone/3600}`
 
     weather.style.visibility = "visible"
+    img.style.visibility = "visible"
 
 } )
 
